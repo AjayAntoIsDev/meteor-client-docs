@@ -19,6 +19,7 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
+      - name: CHMOD
       - run: chmod +x gradlew
       
       - name: Build Javadocs
