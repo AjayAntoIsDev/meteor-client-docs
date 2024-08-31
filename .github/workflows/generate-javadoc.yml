@@ -3,7 +3,7 @@ name: Generate Javadocs
 on:
   push:
     branches:
-      - main  # or the primary branch of your repository
+      - master
 
 jobs:
   build-javadocs:
