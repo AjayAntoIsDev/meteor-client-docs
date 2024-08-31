@@ -1,0 +1,30 @@
+name: Generate Javadocs
+
+on:
+  pull_request:
+    branches:
+      - main  # or the primary branch of your repository
+
+jobs:
+  build-javadocs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'  # Specify the JDK version you're using
+
+      - name: Build Javadocs
+        run: |
+          mkdir -p docs
+          javadoc -d docs $(find . -name "*.java")
+
+      - name: Upload Javadocs
+        uses: actions/upload-artifact@v3
+        with:
+          name: javadocs
+          path: docs
