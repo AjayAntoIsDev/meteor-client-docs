@@ -19,16 +19,14 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: CHMOD
+      - name: Make Gradle executable
         run: chmod +x gradlew
-      
+
       - name: Build Javadocs
-        run: |
-          mkdir -p docs
-          javadoc -d docs $(find . -name "*.java")
-      
+        run: ./gradlew javadoc
+
       - name: Upload Javadocs
         uses: actions/upload-artifact@v3
         with:
           name: javadocs
-          path: docs
+          path: build/docs/javadoc
