@@ -4,6 +4,10 @@ concurrency:
   group: "build"
   cancel-in-progress: false
 
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
